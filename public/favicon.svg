@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <circle cx="32" cy="32" r="30" fill="#061F49" />
+  <!-- Sun element -->
+  <circle cx="32" cy="24" r="14" fill="url(#sun-grad)" />
+  <!-- Blue wave element -->
+  <path d="M18 36C18 28 24 24 30 24C27 28 27 34 32 35C24 37 20 42 22 46C20 43 18 39 18 36Z" fill="#0874C9" />
+  <!-- Green leaf element -->
+  <path d="M32 23C40 25 44 32 44 41C36 41 31 35 32 23Z" fill="#159A2E" />
+  <path d="M32 23C36 31 40 37 44 41" stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" />
+  <defs>
+    <linearGradient id="sun-grad" x1="22" y1="14" x2="42" y2="34" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFCA05" />
+      <stop offset="1" stop-color="#FF8500" />
+    </linearGradient>
+  </defs>
+</svg>
