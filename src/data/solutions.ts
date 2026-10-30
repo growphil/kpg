@@ -185,59 +185,150 @@ export const solutionsData: Solution[] = [
 export interface SectorItem {
   id: string;
   title: string;
+  tag: string;
+  iconName: string;
+  badgeStyle: {
+    bg: string;
+    text: string;
+    border: string;
+    hoverBg: string;
+  };
   description: string;
+  highlights: string[];
   ctaText: string;
   ctaLink: string;
+  isPartner?: boolean;
 }
 
 export const sectorsData: SectorItem[] = [
   {
     id: 'residential',
     title: 'Residential Customers',
-    description: 'Explore solar energy solutions for homes and residential properties seeking reliable electricity options.',
+    tag: 'Homes & Estates',
+    iconName: 'Home',
+    badgeStyle: {
+      bg: 'bg-emerald-50',
+      text: 'text-[#159A2E]',
+      border: 'border-emerald-200/80',
+      hoverBg: 'group-hover:bg-[#159A2E] group-hover:text-white',
+    },
+    description: 'Explore solar energy solutions for homes and residential properties seeking reliable electricity and protection against power cuts.',
+    highlights: ['Rooftop solar & battery storage', 'Backup power for essential home appliances'],
     ctaText: 'Explore Residential Solutions',
     ctaLink: '/solutions#residential',
   },
   {
     id: 'commercial',
     title: 'Commercial Businesses',
-    description: 'Discover energy solutions for shops, offices, hotels, restaurants and other commercial facilities.',
+    tag: 'Retail & Office',
+    iconName: 'Building2',
+    badgeStyle: {
+      bg: 'bg-sky-50',
+      text: 'text-[#0874C9]',
+      border: 'border-sky-200/80',
+      hoverBg: 'group-hover:bg-[#0874C9] group-hover:text-white',
+    },
+    description: 'Discover energy solutions for shops, offices, hotels, restaurants and commercial facilities looking to cut generator fuel bills.',
+    highlights: ['Commercial rooftop solar arrays', 'Smart load management & peak shaving'],
     ctaText: 'Explore Commercial Solutions',
     ctaLink: '/solutions#commercial',
   },
   {
     id: 'industrial',
     title: 'Industrial Facilities',
-    description: 'Explore energy solutions for factories, warehouses and industrial operations with varying power requirements.',
+    tag: 'Manufacturing & Plants',
+    iconName: 'Factory',
+    badgeStyle: {
+      bg: 'bg-slate-100',
+      text: 'text-[#061F49]',
+      border: 'border-slate-300/80',
+      hoverBg: 'group-hover:bg-[#061F49] group-hover:text-white',
+    },
+    description: 'Explore energy solutions for factories, warehouses, cold storage, and processing plants with high or continuous power demands.',
+    highlights: ['High-capacity inverter systems', 'Industrial Battery Energy Storage (BESS)'],
     ctaText: 'Explore Industrial Solutions',
     ctaLink: '/solutions#industrial',
   },
   {
     id: 'government',
     title: 'Government Projects',
-    description: 'Explore solar energy applications for government buildings, public infrastructure and community development initiatives across Papua New Guinea.',
+    tag: 'Public Infrastructure',
+    iconName: 'Landmark',
+    badgeStyle: {
+      bg: 'bg-amber-50',
+      text: 'text-[#B87A00]',
+      border: 'border-amber-200/80',
+      hoverBg: 'group-hover:bg-[#B87A00] group-hover:text-white',
+    },
+    description: 'Explore solar energy applications for administrative complexes, provincial stations, public utilities, and infrastructure initiatives.',
+    highlights: ['Standardized public procurement', 'Turnkey deployment for regional offices'],
     ctaText: 'Explore Government Solutions',
     ctaLink: '/contact?type=Government%20%2F%20Institutional%20Project',
   },
   {
     id: 'institutions',
     title: 'Institutions & Organisations',
-    description: 'Discover energy solutions for schools, healthcare facilities, community centres and other institutional buildings.',
+    tag: 'Health & Education',
+    iconName: 'GraduationCap',
+    badgeStyle: {
+      bg: 'bg-indigo-50',
+      text: 'text-indigo-600',
+      border: 'border-indigo-200/80',
+      hoverBg: 'group-hover:bg-indigo-600 group-hover:text-white',
+    },
+    description: 'Dependable solar and backup power for rural health posts, provincial hospitals, secondary schools, universities, and church missions.',
+    highlights: ['24/7 cold storage for vaccines & clinics', 'Power for classrooms, ICT labs & water pumps'],
     ctaText: 'Explore Institutional Solutions',
     ctaLink: '/contact?type=Government%20%2F%20Institutional%20Project',
   },
   {
     id: 'dealers',
     title: 'Solar Dealers & Distributors',
-    description: 'Explore potential product supply and business partnership opportunities with KYRA Pacific Green.',
+    tag: 'B2B Distribution',
+    iconName: 'Truck',
+    badgeStyle: {
+      bg: 'bg-orange-50',
+      text: 'text-[#FF8500]',
+      border: 'border-orange-200/80',
+      hoverBg: 'group-hover:bg-[#FF8500] group-hover:text-white',
+    },
+    description: 'Partner with KYRA Pacific Green to distribute tier-1 solar inverters, high-efficiency panels, and lithium battery storage across PNG.',
+    highlights: ['Wholesale equipment availability', 'Technical product support & warranties'],
     ctaText: 'Become a Partner',
     ctaLink: '/partnerships',
+    isPartner: true,
   },
   {
     id: 'installers',
-    title: 'Solar Installers & EPC Companies',
-    description: 'Connect with KYRA Pacific Green to discuss product requirements and potential opportunities for solar projects.',
-    ctaText: 'Discuss Partnership',
+    title: 'Solar Installers & EPCs',
+    tag: 'Contractors & EPC',
+    iconName: 'HardHat',
+    badgeStyle: {
+      bg: 'bg-teal-50',
+      text: 'text-teal-700',
+      border: 'border-teal-200/80',
+      hoverBg: 'group-hover:bg-teal-700 group-hover:text-white',
+    },
+    description: 'Access reliable tier-1 equipment supply, engineering design guidance, and logistics support for your solar installation projects.',
+    highlights: ['Engineered component compatibility', 'Direct project staging & procurement'],
+    ctaText: 'Discuss EPC Partnership',
     ctaLink: '/partnerships',
+    isPartner: true,
+  },
+  {
+    id: 'custom-projects',
+    title: 'Specialized & Turnkey Projects',
+    tag: 'Microgrids & Agriculture',
+    iconName: 'Sparkles',
+    badgeStyle: {
+      bg: 'bg-[#061F49]/5',
+      text: 'text-[#061F49]',
+      border: 'border-[#061F49]/20',
+      hoverBg: 'group-hover:bg-gradient-to-r group-hover:from-[#061F49] group-hover:to-[#0874C9] group-hover:text-white',
+    },
+    description: 'Have a remote mining camp, agricultural processing site, or off-grid island facility? We engineer customized solar solutions.',
+    highlights: ['Custom microgrid engineering', 'Agricultural solar pumping & processing'],
+    ctaText: 'Inquire for Custom Project',
+    ctaLink: '/contact?type=Custom%20%2F%20Turnkey%20Project',
   },
 ];

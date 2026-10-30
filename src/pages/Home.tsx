@@ -11,6 +11,13 @@ import {
   Phone,
   MapPin,
   Sparkles,
+  Home as HomeIcon,
+  Building2,
+  Factory,
+  Landmark,
+  GraduationCap,
+  Truck,
+  HardHat,
 } from 'lucide-react';
 import { brandConfig } from '@/config/brand';
 import { contactConfig } from '@/config/contact';
@@ -29,6 +36,28 @@ import { FAQAccordion } from '@/components/common/FAQAccordion';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { SEOHead } from '@/components/common/SEOHead';
 import { useGsapReveal } from '@/hooks/useGsapReveal';
+
+const renderSectorIcon = (iconName: string) => {
+  switch (iconName) {
+    case 'Home':
+      return <HomeIcon className="w-5 h-5" />;
+    case 'Building2':
+      return <Building2 className="w-5 h-5" />;
+    case 'Factory':
+      return <Factory className="w-5 h-5" />;
+    case 'Landmark':
+      return <Landmark className="w-5 h-5" />;
+    case 'GraduationCap':
+      return <GraduationCap className="w-5 h-5" />;
+    case 'Truck':
+      return <Truck className="w-5 h-5" />;
+    case 'HardHat':
+      return <HardHat className="w-5 h-5" />;
+    case 'Sparkles':
+    default:
+      return <Sparkles className="w-5 h-5" />;
+  }
+};
 
 export const Home: React.FC = () => {
   const heroRevealRef = useGsapReveal<HTMLDivElement>({ y: 25, duration: 0.8, stagger: 0.12 });
@@ -332,27 +361,59 @@ export const Home: React.FC = () => {
           </div>
 
           {/* Sectors Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 mb-12 sm:mb-16">
             {sectorsData.map(sector => (
               <div
                 key={sector.id}
-                className="bg-[#F4F8FB] rounded-xl p-5 sm:p-6 border border-[#E3EAF0] flex flex-col justify-between hover:bg-white hover:shadow-2xs transition-all duration-200"
+                className="group relative bg-[#F8FAFC] hover:bg-white rounded-2xl p-5 sm:p-6 border border-[#E3EAF0] hover:border-[#0874C9]/40 flex flex-col justify-between hover:shadow-xl hover:shadow-[#061F49]/5 transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
                 data-reveal
               >
+                {/* Top accent line on hover */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0874C9] via-[#FF8500] to-[#159A2E] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
                 <div>
-                  <h3 className="text-sm sm:text-base font-bold text-[#061F49] mb-1.5 sm:mb-2">
+                  {/* Top Header: Icon + Category Tag */}
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <div
+                      className={`w-11 h-11 rounded-xl flex items-center justify-center border transition-all duration-300 shrink-0 ${sector.badgeStyle.bg} ${sector.badgeStyle.text} ${sector.badgeStyle.border} ${sector.badgeStyle.hoverBg}`}
+                    >
+                      {renderSectorIcon(sector.iconName)}
+                    </div>
+                    <span className="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-white text-[#64748B] border border-[#E3EAF0] shadow-2xs">
+                      {sector.tag}
+                    </span>
+                  </div>
+
+                  {/* Sector Title */}
+                  <h3 className="text-base sm:text-lg font-bold text-[#061F49] mb-2 group-hover:text-[#0874C9] transition-colors leading-snug">
                     {sector.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[#64748B] leading-relaxed mb-3 sm:mb-4">
+
+                  {/* Description */}
+                  <p className="text-xs sm:text-sm text-[#475569] leading-relaxed mb-4">
                     {sector.description}
                   </p>
+
+                  {/* Highlights list */}
+                  <ul className="space-y-1.5 mb-5 pt-3 border-t border-[#E3EAF0]/60">
+                    {sector.highlights.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-xs text-[#334155]">
+                        <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#0874C9] mt-1.5 shrink-0" />
+                        <span className="leading-snug">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+
+                {/* Interactive CTA Link */}
                 <Link
                   to={sector.ctaLink}
-                  className="min-h-[40px] text-xs font-semibold text-[#0874C9] hover:text-[#061F49] inline-flex items-center gap-1.5 touch-manipulation"
+                  className="mt-auto pt-3 border-t border-[#E3EAF0]/60 min-h-[44px] text-xs font-bold text-[#0874C9] group-hover:text-[#061F49] inline-flex items-center justify-between w-full transition-colors touch-manipulation"
                 >
                   <span>{sector.ctaText}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <div className="w-7 h-7 rounded-full bg-white group-hover:bg-[#0874C9] group-hover:text-white border border-[#E3EAF0] group-hover:border-[#0874C9] flex items-center justify-center transition-all duration-200 shadow-2xs">
+                    <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" />
+                  </div>
                 </Link>
               </div>
             ))}
